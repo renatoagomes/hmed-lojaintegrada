@@ -59,13 +59,6 @@
   margin-right: 3px;
 }
 
-/** BANNER / SLIDES **/
-.flexslider .slides img {
-    height: 230px;
-    width: auto;
-    object-fit: cover;
-}
-
 
 /** CORPO DA PAGINA && LISTAGEM DE PRODUTOS **/
 body.pagina-inicial #corpo .coluna.esquerda {
@@ -163,6 +156,14 @@ body.pagina-inicial #corpo .coluna.esquerda {
   .conteiner .logo {
     display:none;
   }
+
+  /** BANNER / SLIDES **/
+  .flexslider .slides img {
+    height: 230px;
+    width: auto;
+    object-fit: cover;
+  }
+
   
   #secao-vantagens {
     display: grid;
