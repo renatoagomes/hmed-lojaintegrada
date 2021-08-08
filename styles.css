@@ -1,0 +1,180 @@
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/** HOMEPAGE BUSCA **/
+.busca.borda-alpha {
+  background: #fff;
+  border: none;
+}
+.busca input {
+  width: 90%;
+}
+.busca .botao-busca {
+  right: -21px;
+}
+
+/** HOMEPAGE CARRINHO **/
+.carrinho.vazio>a span {
+  line-height: 30px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+.carrinho>a i {
+  width: 30px;
+  height: 30px;
+  line-height: 33px;
+  font-size: 18px;
+}
+
+/** MENU **/
+#novo-menu {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+  align-items:center;
+  row-gap: 1rem;
+  margin: 2rem 0;
+}
+#novo-menu a {
+  font-size: 1.4em;
+  font-family: 'open sans' ,sans-serif;
+  color: #5d616d;
+}
+#novo-menu a:hover {
+  color: #2b5263;
+  font-weight: 500;
+}
+#novo-menu a:last-child {
+  text-transform:uppercase;
+}
+#novo-menu a div.pontinho-menu {
+  height: 7px;
+  width: 7px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-right: 3px;
+}
+
+/** BANNER / SLIDES **/
+.flexslider .slides img {
+    height: 230px;
+    width: auto;
+    object-fit: cover;
+}
+
+
+/** CORPO DA PAGINA && LISTAGEM DE PRODUTOS **/
+body.pagina-inicial #corpo .coluna.esquerda {
+  display: none;
+}
+.listagem .titulo-categoria {
+  font-size: 2em;
+  padding: 0;
+}
+.listagem .titulo-categoria:hover {
+  background: transparent;
+}
+.listagem .produtos-carrossel .listagem-linha li .listagem-item:hover {
+    border: 1px solid #cccc;
+    box-shadow: 0px 0px 10px -3px rgb(0 0 0 / 40%);
+}
+.listagem-item:hover .acoes-produto {
+  bottom: 0%;
+}
+.listagem-item .nome-produto {
+  font-weight:bold;
+}
+.listagem .produtos-carrossel .listagem-linha li .listagem-item {
+  padding-bottom: 3rem;
+}
+.listagem-item:hover .botao.principal.botao-comprar {
+    background-color: #2B5263;
+    width: 80%;
+    font-weight: bold;
+    padding: 8px;
+    font-size: 1.3em;
+}
+
+/** SECAO VANTAGENS **/
+@media all and (min-width:900px) {
+  #secao-vantagens {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    font-size: 1.5em;
+    margin-bottom:2rem;
+  }
+}
+
+#secao-vantagens li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#secao-vantagens img {
+  max-width: 80px;
+  margin-right: 5px;
+}
+
+#secao-vantagens strong {
+  text-transform: uppercase;
+}
+
+
+/** RESPONSIVIDADE MOBILE < 900PX **/
+@media all and (max-width:900px) {
+  #novo-menu {
+    display: block;
+    text-align: left;
+    margin: 2rem 1rem;
+  }
+  #novo-menu a {
+    font-size: 1.2em;
+  }
+  #novo-menu a~a {
+    border-top: 1px solid #888;
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+  #cabecalho .menu.superior {
+    background-color: transparent;
+    border: 1px solid #888;
+    border-radius: 10px;
+    margin: 1rem 0rem;
+  }
+  .conteudo-topo .busca-mobile {
+    background-color: #fff;
+  }
+  .busca .botao-busca {
+    height: auto;
+    top: 0;
+    right: 30px;
+    line-height: 28px;
+    background-color: #2B5263;
+  }
+  .busca input {
+    width: 70%;
+  }
+  .conteiner .logo {
+    display:none;
+  }
+  
+  #secao-vantagens {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 1em;
+    margin-bottom: 2rem;
+    margin-left: 5px;
+  }
+  #secao-vantagens li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0px;
+  }
+}
