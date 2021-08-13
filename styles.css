@@ -134,6 +134,19 @@ body.pagina-inicial #corpo .coluna.esquerda {
 #corpo .menu.lateral .nivel-um>li.borda-principal>a strong {
   color: #fff
 }
+#corpo .menu.lateral .filtro h4 {
+    margin-top: 0;
+    overflow: hidden;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    color: white;
+    padding: 10px 10px;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+#corpot .menu.lateral .filtro .borda-alpha {
+    background: white;
+}
 
 
 /** NOVO RODAPE **/
