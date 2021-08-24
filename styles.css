@@ -58,7 +58,7 @@
   border-radius: 50%;
   display: inline-block;
   margin-bottom: 2px;
-  margin-right: 3px;
+  margin-right: 8px;
 }
 
 
@@ -118,6 +118,20 @@ body.pagina-inicial #corpo .coluna.esquerda {
   text-transform: uppercase;
 }
 
+#corpo .breadcrumbs {
+    border-style: solid;
+    border-width: 1px 0;
+    padding: 10px 0;
+    margin: 0 0 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+#corpo .breadcrumbs ul {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
 
 /** PAGINA DE CATEGORIA (MENU LATERAL) **/
 #corpo .breadcrumbs ul li * {
@@ -199,10 +213,17 @@ body.pagina-inicial #corpo .coluna.esquerda {
   #novo-menu a {
     font-size: 1.2em;
   }
+  #novo-menu a:first-child {
+    border-top: 0;
+  }
   #novo-menu a~a {
     border-top: 1px solid #888;
     padding-top: 10px;
     margin-top: 10px;
+    margin: 4px 0px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
   }
   #cabecalho .menu.superior {
     background-color: transparent;
@@ -212,6 +233,7 @@ body.pagina-inicial #corpo .coluna.esquerda {
   }
   .conteudo-topo .busca-mobile {
     background-color: #fff;
+    margin-top: 10px;
   }
   .conteudo-topo .busca-mobile .atalho-menu {
     background: url(https://res.cloudinary.com/tesseract/image/upload/v1628805448/hmed/Menu_mobile.png) no-repeat;
@@ -223,23 +245,56 @@ body.pagina-inicial #corpo .coluna.esquerda {
   .busca .botao-busca {
     height: auto;
     top: 0;
-    right: 30px;
-    line-height: 28px;
+    right: 36px;
+    line-height: 25px;
     background-color: #2B5263;
   }
   .busca input {
     width: 70%;
   }
+  .botao-busca.icon-search:before {
+    font-size: 23px;
+  }
   .conteiner .logo {
     display:none;
   }
+  #cabecalho .atalhos-mobile {
+    opacity: 1!important;
+  }
+  #cabecalho .atalhos-mobile li {
+    float: right;
+    height: 100%;
+    margin-top: 0px;
+    line-height: 68px;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: -10px;
+  }
+  #cabecalho .atalhos-mobile li.vazia {
+    display: none;
+  }
+  #cabecalho .atalhos-mobile li:first-child {
+    border: none;
+    float: left;
+  }
+  #cabecalho .atalhos-mobile li:first-child a {
+    top: 0;
+  }
+  #cabecalho .atalhos-mobile a img {
+    width:78px;
+  }
+
 
   /** BANNER / SLIDES **/
+  .flexslider {
+    border-radius:0;
+  }
   .flexslider .slides img {
-    height: 230px;
+    height: 210px;
     width: auto;
     object-fit: cover;
   }
+
 
 
   #secao-vantagens {
@@ -275,7 +330,7 @@ body.pagina-inicial #corpo .coluna.esquerda {
     width: 70%;
     margin: 0px auto;
     text-indent: -9999px;
-    border-bottom: 2px solid #999;
+    border-bottom: 0px solid #999;
   }
 
   .listagem .listagem-item .nome-produto {
@@ -295,10 +350,10 @@ body.pagina-inicial #corpo .coluna.esquerda {
     text-align: center;
   }
   .acoes-produto-responsiva.visible-phone a {
-    width: 80%;
+    width: 90%;
     text-align: center;
-    border-radius: 10px;
-    padding: 5px;
+    border-radius: 7px;
+    padding: 10px;
   }
   .acoes-produto-responsiva.visible-phone a span.titulo {
     font-weight: bold;
@@ -312,5 +367,39 @@ body.pagina-inicial #corpo .coluna.esquerda {
     font-size: 1.1em;
     padding: 3px 20px;
     border: none;
+  }
+  .listagem .listagem-linha:first-child {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  .listagem .listagem-linha li {
+    margin-top: -10px;
+  }
+  .listagem .imagem-produto {
+    min-height: 240px;
+  }
+  .listagem .imagem-produto img {
+    max-width: 160%;
+    max-height: 160%;
+    zoom: 120%;
+    top: -10%;
+    left: 0%;
+    margin: 10px auto;
+  }
+  #corpo .breadcrumbs {
+    border: 0;
+  }
+  #corpo .breadcrumbs ul li * {
+    font-weight: 700;
+    font-size: 0.4em;
+    font-weight: 400;
+  }
+  #corpo .breadcrumbs ul li {
+    display:block!important;
+    border-left: 1px solid rgba(0,0,0,0.1);
+  }
+  #corpo .breadcrumbs ul li:last-child * {
+    font-weight: 600;
   }
 }
