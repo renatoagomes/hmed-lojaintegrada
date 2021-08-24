@@ -96,11 +96,11 @@ body.pagina-inicial #corpo .coluna.esquerda {
 
 /** SECAO VANTAGENS **/
 #secao-vantagens {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  font-size: 1.5em;
-  margin-bottom:2rem;
+    display: flex;
+    max-width: 1240px;
+    justify-content: space-around;
+    font-size: 1.5em;
+    margin: 0 auto 2rem;
 }
 
 #secao-vantagens li {
@@ -158,7 +158,7 @@ body.pagina-inicial #corpo .coluna.esquerda {
     font-size: 1.4em;
     font-weight: bold;
 }
-#corpot .menu.lateral .filtro .borda-alpha {
+#corpo .menu.lateral .filtro .borda-alpha {
     background: white;
 }
 
@@ -201,6 +201,14 @@ body.pagina-inicial #corpo .coluna.esquerda {
   margin: 1rem;
 }
 
+/** RESPONSIVIDADE MOBILE < 900PX **/
+@media all and (min-width:1240px) {
+
+.pagina-inicial div#listagemProdutos {
+      width: 120%;
+      margin-left: -10%;
+  }
+}
 
 
 /** RESPONSIVIDADE MOBILE < 900PX **/
