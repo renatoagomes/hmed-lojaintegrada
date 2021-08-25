@@ -201,13 +201,18 @@ body.pagina-inicial #corpo .coluna.esquerda {
   margin: 1rem;
 }
 
-/** RESPONSIVIDADE MOBILE < 900PX **/
+/** RESPONSIVIDADE MD+ **/
 @media all and (min-width:1240px) {
 
-.pagina-inicial div#listagemProdutos {
-      max-width: 1240px;
-      width: 120%;
-      margin-left: -10%;
+  .pagina-inicial div#listagemProdutos {
+    max-width: 1240px;
+    width: 120%;
+    margin-left: -10%;
+  }
+
+  /** SECAO VANTAGENS **/
+  #secao-vantagens {
+    max-width: 1200px;
   }
 }
 
