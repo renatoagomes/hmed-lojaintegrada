@@ -5,17 +5,19 @@ $(function () {
   let novoMenu = $('#novo-menu');
   let linksMenu = $('#cabecalho .menu.superior ul.nivel-dois li.com-filho > a');
   let coresCategorias = {
-    "Ácido Poliglicólico / PGA / Vicryl" :"#FF0000",
-    "Catgut Cromado"                     :"#FF0000",
-    "Catgut Simples"                     :"#FF0000",
-    "Nylon"                              :"#FF0000",
-    "Nylon Incolor"                      :"#FFFF00",
-    "PGC 25 / Monocryl"                  :"#FFFF00",
-    "Polidioxanona / PDS / PDO"          :"#00FF00",
-    "Poliéster / Mersilene"              :"#00FFFF",
-    "Polipropileno / Prolene"            :"#0000FF",
-    "Seda"                               :"#0000FF",
-    'corPadrao'                          :"#cccccc" 
+    "Ácido Poliglicólico / PGA / Vicryl"     :"#9D80A6",
+    "Algodão"                                :"#DBAB9D",
+    "Seda"                                   :"#5EB9E9",
+    "Catgut Simples"                         :"#E2D444",
+    "Catgut Cromado"                         :"#B49144",
+    "Nylon"                                  :"#86B97B",
+    "Nylon Incolor"                          :"#6CA874",
+    "Polidioxanona / PDS / PDO"              :"#9DAEA3",
+    "PGC 25 / Monocryl"                      :"#DE9A50",
+    "Poliéster / Mersilene"                  :"#E0820A",
+    "Polipropileno / Prolene"                :"#4D9FAE",
+    'Ácido poliglicólico de rápida absorção' :"#A05E82",
+    'corPadrao'                              :"#cccccc" 
   };
 
   /** Constante para determinar se é mobile antes de aplicar alterações de layout/comportamento **/
@@ -38,8 +40,10 @@ $(function () {
     $('.breadcrumbs ul li:last-child strong').removeClass('cor-secundaria').addClass('cor-principal');
 
     if (isMobile) {
-      $('#cabecalho a.icon-home').addClass("logo-mobile").removeClass('icon-home').html('<img src="https://res.cloudinary.com/tesseract/image/upload/v1628812861/hmed/logo-hmed-branco.png"></img>');
       $('#cabecalho > div.conteiner > div.row-fluid').addClass('hidden-phone');
+      $('#cabecalho a.icon-home').html('<img src="https://res.cloudinary.com/tesseract/image/upload/v1628812861/hmed/logo-hmed-branco.png"></img>')
+        .addClass("logo-mobile")
+        .removeClass('icon-home');
     }
   }
 
@@ -97,6 +101,8 @@ $(function () {
 
     if(isHomepage) {
       insereSecaoVantagens();
+      $("#listagemProdutos ul.produtos-carrossel").last().addClass('limite-banner');
+      $("div.banner.lateral").insertAfter('ul.limite-banner');
     }
 
     else {
@@ -108,8 +114,7 @@ $(function () {
 
   function criaNovoRodape() {
     const htmlRodape = '<div id="novoRodape"> <div class="container-esquerda fundo-principal"> <div class="logo-container"> <img src="https://res.cloudinary.com/tesseract/image/upload/v1628812861/hmed/logo-hmed-branco.png" alt="logo HMED"> </div> <div class="sobre-container"></div> <div class="fale-conosco-container"></div> </div> <div class="container-direita fundo-secundario"> <div class="categorias-container"></div> <div class="conteudo-pagamento-selos-container"> <div class="conteudo-container"></div> <div class="pagamento-container"></div> <div class="selos-container"></div> </div> </div> </div>';
-    $('#rodape').hide();
-    $(htmlRodape).insertAfter('#rodape');
+    $(htmlRodape).insertBefore('#rodape');
 
     let itemSobre = $('#rodape .sobre-loja-rodape');
     let itemCategorias = $('#rodape .links-rodape-categorias');
@@ -122,16 +127,32 @@ $(function () {
     $('#novoRodape .container-direita .conteudo-container').append(itemPaginas);
     $('#novoRodape .container-direita .pagamento-container').append(itemPagamento);
     $('#novoRodape .container-direita .selos-container').append(itemSelos);
-
-
+    
     let itemContato = $('#rodape > div.institucional.fundo-secundario > div > div > div > div > div');
     $('#novoRodape .container-esquerda .fale-conosco-container').append(itemContato);
+
+    $('#rodape .institucional').remove();
+    $('#rodape .pagamento-selos').remove();
+    $('#novoRodape .sobre-loja-rodape span.titulo').remove();
+    $('#novoRodape .fale-conosco-container > div.span12.visible-phone').removeClass('span12').removeClass('visible-phone').addClass('span5');
+    $('#novoRodape .sobre-container > div.span4.sobre-loja-rodape').removeClass("span4").addClass('span5');
   }
 
+  function arrumaPaginaCategoria() {
+    $('.pagina-categoria .filtro.lista.borda-principal h4.cor-secundaria').removeClass("cor-secundaria").addClass('fundo-principal');
+    $('.pagina-categoria #corpo > div > div.secao-principal > div.conteudo > h1').removeClass('cor-secundaria').addClass('cor-principal');
+    let htmlFitroDiametros = '<div class="menu lateral diametros"> <ul class="nivel-um"> <li class="com-filho   borda-principal"> <a href="#" title="Diametros"> <i class="icon-chevron-down fundo-secundario"></i> <strong class="titulo cor-secundaria">Diametros (USP)</strong> </a> <ul id="filtro-diametro" class="nivel-dois"> </ul> </li> </ul> </div>';
+    let categoriaSelecionada = $('.pagina-categoria .menu.lateral ul.nivel-um ul.nivel-dois > li.com-filho.ativo').length;
 
+    if (categoriaSelecionada) {
+      $('.menu.lateral').parent().append(htmlFitroDiametros);
+      let diametros = $('.pagina-categoria .menu.lateral ul.nivel-um ul.nivel-dois > li.com-filho.ativo ul.nivel-tres li');
+      $('#filtro-diametro').append(diametros);
+    }
+  }
 
   function aplicaEstilos() {
-    body.append("<style> .uppercase { text-transform: uppercase; } /** HOMEPAGE BUSCA **/ .busca.borda-alpha { background: #fff; border: none; } .busca input { width: 90%; } .busca .botao-busca { right: -21px; } /** HOMEPAGE CARRINHO **/ .carrinho.vazio>a span { line-height: 30px; font-weight: 100; text-transform: uppercase; } .carrinho>a i { width: 30px; height: 30px; line-height: 33px; font-size: 18px; } /** MENU **/ #novo-menu { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; align-items: center; row-gap: 0.4rem; margin: 2rem 0; } #novo-menu a { font-size: 1.4em; font-family: 'open sans' ,sans-serif; color: #5d616d; min-height:40px; align-self: baseline; } #novo-menu a:hover { color: #2b5263; font-weight: 500; } #novo-menu a:first-child { text-transform:uppercase; } #novo-menu a div.pontinho-menu { height: 7px; width: 7px; background-color: #bbb; border-radius: 50%; display: inline-block; margin-bottom: 2px; margin-right: 8px; } /** CORPO DA PAGINA && LISTAGEM DE PRODUTOS **/ body.pagina-inicial #corpo .coluna.esquerda { display: none; } .listagem .titulo-categoria { font-size: 2em; padding: 0; } .listagem .titulo-categoria:hover { background: transparent; } .listagem .produtos-carrossel .listagem-linha li .listagem-item:hover { border: 1px solid #cccc; box-shadow: 0px 0px 10px -3px rgb(0 0 0 / 40%); } .listagem .listagem-item:hover .acoes-produto { position: relative; } .listagem .listagem-item .nome-produto { font-weight:bold; } .listagem .produtos-carrossel .listagem-linha li .listagem-item { padding-bottom: 3rem; } .listagem-item:hover .botao.principal.botao-comprar { background-color: #2B5263; width: 80%; font-weight: bold; padding: 8px; font-size: 1.3em; } /** SECAO VANTAGENS **/ #secao-vantagens { display: flex; max-width: 90%; justify-content: space-around; font-size: 1.5em; margin: 0 auto 2rem; } #secao-vantagens li { display: flex; justify-content: center; align-items: center; } #secao-vantagens img { max-width: 80px; margin-right: 5px; } #secao-vantagens strong { text-transform: uppercase; } #corpo .breadcrumbs { border-style: solid; border-width: 1px 0; padding: 10px 0; margin: 0 0 20px; display: flex; justify-content: left; align-items: center; } #corpo .breadcrumbs ul { margin: 0; display: flex; align-items: center; } /** PAGINA DE CATEGORIA (MENU LATERAL) **/ #corpo .breadcrumbs ul li * { font-size: 1.3em; padding: 0 10px; } #corpo .menu.lateral .nivel-um>li.borda-principal>a { padding: 0 20px; background-color: #254756; } #corpo .menu.lateral li>a i { display: none!important; } #corpo .menu.lateral .nivel-um>li.borda-principal>a strong { color: #fff } #corpo .menu.lateral .filtro h4 { margin-top: 0; overflow: hidden; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); color: white; padding: 10px 10px; font-size: 1.4em; font-weight: bold; } #corpo .menu.lateral .filtro .borda-alpha { background: white; } /** NOVO RODAPE **/ #novoRodape { width: 100%; display: flex; } #novoRodape .container-esquerda { width: 35%; display: flex; flex-direction: column; justify-content: center; align-items: center; } #novoRodape .container-esquerda .logo-container img { max-width: 150px; } #novoRodape .container-direita { display:flex; width: 65%; } #novoRodape .container-direita .categorias-container, #novoRodape .container-direita .conteudo-pagamento-selos-container { display: flex; flex-direction: column; align-items: start; padding: 1.5rem; } #novoRodape .container-direita .selos-container { display: flex; } #novoRodape .container-direita .selos-container ul { display: flex; width: 100%; justify-content: center; align-items: center; } #novoRodape .container-direita .selos-container ul li { margin: 1rem; } /** RESPONSIVIDADE MD+ **/ @media all and (min-width:1240px) { .pagina-inicial div#listagemProdutos { max-width: 1240px; width: 120%; margin-left: -10%; } /** SECAO VANTAGENS **/ #secao-vantagens { max-width: 1200px; } } /** RESPONSIVIDADE MOBILE < 900PX **/ @media all and (max-width:900px) { #novo-menu { display: block; text-align: left; margin: 2rem 1rem; } #novo-menu a { font-size: 1.2em; } #novo-menu a:first-child { border-top: 0; } #novo-menu a~a { border-top: 1px solid #888; padding-top: 10px; margin-top: 10px; margin: 4px 0px; display: flex; justify-content: left; align-items: center; } #cabecalho .menu.superior { background-color: transparent; border: 1px solid #888; border-radius: 10px; margin: 1rem 0rem; } .conteudo-topo .busca-mobile { background-color: #fff; margin-top: 10px; } .conteudo-topo .busca-mobile .atalho-menu { background: url(https://res.cloudinary.com/tesseract/image/upload/v1628805448/hmed/Menu_mobile.png) no-repeat; background-size: 80%; border: 0; height: 32px; width: 25px; } .busca .botao-busca { height: auto; top: 0; right: 36px; line-height: 25px; background-color: #2B5263; } .busca input { width: 70%; } .botao-busca.icon-search:before { font-size: 23px; } .conteiner .logo { display:none; } #cabecalho .atalhos-mobile { opacity: 1!important; } #cabecalho .atalhos-mobile li { float: right; height: 100%; margin-top: 0px; line-height: 68px; border-right: 1px solid rgba(0, 0, 0, 0.2); border-left: 1px solid rgba(255, 255, 255, 0.2); margin-bottom: -10px; } #cabecalho .atalhos-mobile li.vazia { display: none; } #cabecalho .atalhos-mobile li:first-child { border: none; float: left; } #cabecalho .atalhos-mobile li:first-child a { top: 0; } #cabecalho .atalhos-mobile a img { width:78px; } /** BANNER / SLIDES **/ .flexslider { border-radius:0; } .flexslider .slides img { height: 210px; width: auto; object-fit: cover; } #secao-vantagens { display: grid; grid-template-columns: 1fr 1fr; font-size: 0.9em; margin-bottom: 2rem; margin-left: 0px; } #secao-vantagens li { display: flex; justify-content: center; align-items: center; padding: 5px 0px; } #secao-vantagens img { max-width: 45px; margin-right: 5px; } .listagem .titulo-categoria { text-align:center; font-size:1.5em; display: flex; justify-content: center; } .listagem .titulo-categoria strong:after { content: '.'; display: block; height: 5px; width: 70%; margin: 0px auto; text-indent: -9999px; border-bottom: 0px solid #999; } .listagem .listagem-item .nome-produto { font-weight:bold; } .listagem-item .botao.principal.botao-comprar { background-color: #2B5263; padding: 8px 0px; width: 100%; text-align: center; border-radius: 10px; } .acoes-produto-responsiva.visible-phone { position: relative; margin-top: 1rem!important; width: 100%; text-align: center; } .acoes-produto-responsiva.visible-phone a { width: 90%; text-align: center; border-radius: 7px; padding: 10px; } .acoes-produto-responsiva.visible-phone a span.titulo { font-weight: bold; text-transform: uppercase; } .info-produto { text-align: center; font-size: 1.3em; } .bandeiras-produto span.fundo-principal.bandeira-promocao { font-size: 1.1em; padding: 3px 20px; border: none; } .listagem .listagem-linha:first-child { padding: 0; margin: 0; border: 0; } .listagem .listagem-linha li { margin-top: -10px; } .listagem .imagem-produto { min-height: 240px; } .listagem .imagem-produto img { max-width: 160%; max-height: 160%; zoom: 120%; top: -10%; left: 0%; margin: 10px auto; } #corpo .breadcrumbs { border: 0; } #corpo .breadcrumbs ul li * { font-weight: 700; font-size: 0.4em; font-weight: 400; } #corpo .breadcrumbs ul li { display:block!important; border-left: 1px solid rgba(0,0,0,0.1); } #corpo .breadcrumbs ul li:last-child * { font-weight: 600; } } </style");
+    body.append("<style> .uppercase { text-transform: uppercase; } /** HOMEPAGE BUSCA **/ .busca.borda-alpha { background: #fff; border: none; } .busca input { width: 90%; } .busca .botao-busca { right: -21px; } /** HOMEPAGE CARRINHO **/ .carrinho.vazio>a span { line-height: 30px; font-weight: 100; text-transform: uppercase; } .carrinho>a i { width: 30px; height: 30px; line-height: 33px; font-size: 18px; } /** MENU **/ #novo-menu { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; align-items: center; row-gap: 0.4rem; margin: 2rem 0; } #novo-menu a { font-size: 1.25em; font-family: 'open sans' ,sans-serif; color: #5d616d; min-height:40px; align-self: baseline; } #novo-menu a:hover { color: #2b5263; font-weight: 500; } #novo-menu a:first-child { text-transform:uppercase; } #novo-menu a div.pontinho-menu { height: 5px; width: 5px; background-color: #bbb; border-radius: 50%; display: inline-block; margin-bottom: 2px; margin-right: 8px; } /** CORPO DA PAGINA && LISTAGEM DE PRODUTOS **/ body.pagina-inicial #corpo .coluna.esquerda { display: none; } .listagem .titulo-categoria { font-size: 2em; padding: 0; margin-left:1.5rem; } .listagem .titulo-categoria:hover { background: transparent; } .listagem .produtos-carrossel .listagem-linha li .listagem-item:hover { border: 1px solid #cccc; box-shadow: 0px 0px 10px -3px rgb(0 0 0 / 40%); } .listagem .listagem-item:hover .acoes-produto { position: relative; } .listagem .listagem-item .nome-produto { font-weight:bold; } .listagem .produtos-carrossel .listagem-linha li .listagem-item { padding-bottom: 3rem; } .listagem-item:hover .botao.principal.botao-comprar { background-color: #2B5263; width: 80%; font-weight: bold; padding: 8px; font-size: 1.3em; } /** BANNER LATERAL **/ ul.limite-banner { max-width: 70%; float: left; } div.banner.lateral { max-width: 20%; float:right; } /** SECAO VANTAGENS **/ #secao-vantagens { display: flex; max-width: 90%; justify-content: space-between; font-size: 1.5em; margin: 0 auto 2rem; } #secao-vantagens:after { content: none; } #secao-vantagens li { display: flex; justify-content: center; align-items: center; } #secao-vantagens img { max-width: 80px; margin-right: 5px; } #secao-vantagens strong { text-transform: uppercase; } #corpo .breadcrumbs { border-style: solid; border-width: 1px 0; padding: 10px 0; margin: 0 0 20px; display: flex; justify-content: left; align-items: center; } #corpo .breadcrumbs ul { margin: 0; display: flex; align-items: center; } /** PAGINA DE CATEGORIA (MENU LATERAL) **/ #corpo .breadcrumbs ul li * { font-size: 1.3em; padding: 0 10px; } #corpo .menu.lateral .nivel-um>li.borda-principal>a { padding: 0 20px; background-color: #254756; } #corpo .menu.lateral li>a i { display: none!important; } #corpo .menu.lateral .nivel-um>li.borda-principal>a strong { color: #fff } #corpo .menu.lateral .filtro h4 { margin-top: 0; overflow: hidden; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); color: white; padding: 10px 10px; font-size: 1.4em; font-weight: bold; } #corpo .menu.lateral .filtro .borda-alpha { background: white; } /** NOVO RODAPE **/ #novoRodape { width: 100%; display: flex; font-family: 'Open Sans'; } #novoRodape span.titulo { font-weight: bold; font-size: 1.2em; } #novoRodape ul { margin-left: 0; margin-top: 1rem; } #novoRodape .links-rodape ul li { list-style-image: none; } #novoRodape .links-rodape ul li::before { content: '\\2022'; color: white; padding-right: 10px; } #novoRodape .container-esquerda { width: 35%; display: flex; flex-direction: column; justify-content: center; align-items: center; } #novoRodape .container-esquerda .sobre-loja-rodape { font-size: 1.1em; text-align: justify; margin-top: 1rem; } #novoRodape .container-esquerda .logo-container img { max-width: 150px; } #novoRodape .fale-conosco-container ul { display: flex; } #novoRodape .fale-conosco-container ul a { max-width: 145px; display: flex; align-items: center; justify-content: space-between; margin-right: 1rem; } #novoRodape .fale-conosco-container ul i { font-size: 3em; margin-right: 1rem; } #novoRodape .container-direita { display:flex; width: 65%; } #novoRodape .container-direita .categorias-container, #novoRodape .container-direita .conteudo-pagamento-selos-container { display: flex; flex-direction: column; align-items: start; padding: 1.5rem; } #novoRodape .container-direita .selos-container { display: flex; } #novoRodape .container-direita .selos-container ul { display: flex; width: 100%; justify-content: center; align-items: center; } #novoRodape .container-direita .selos-container ul li { margin: 1rem; } /*** PAGINA DE CATEGORIA ***/ body.pagina-categoria .filtro.lista.borda-principal { padding: 0; } body.pagina-categoria .filtro.lista.borda-principal h4 { padding: 0.5rem 1rem; } /** RESPONSIVIDADE MD+ **/ @media all and (min-width:1240px) { .pagina-inicial div#listagemProdutos { max-width: 1240px; width: 120%; margin-left: -10%; } /** SECAO VANTAGENS **/ #secao-vantagens { max-width: 1240px; } } /** RESPONSIVIDADE MOBILE < 900PX **/ @media all and (max-width:900px) { #novo-menu { display: block; text-align: left; margin: 2rem 1rem; } #novo-menu a { font-size: 1.2em; } #novo-menu a:first-child { border-top: 0; } #novo-menu a~a { border-top: 1px solid #888; padding-top: 10px; margin-top: 10px; margin: 4px 0px; display: flex; justify-content: left; align-items: center; } #cabecalho .menu.superior { background-color: transparent; border: 1px solid #888; border-radius: 10px; margin: 1rem 0rem; } .conteudo-topo .busca-mobile { background-color: #fff; margin-top: 10px; } .conteudo-topo .busca-mobile .atalho-menu { background: url(https://res.cloudinary.com/tesseract/image/upload/v1628805448/hmed/Menu_mobile.png) no-repeat; background-size: 80%; border: 0; height: 32px; width: 25px; } .busca .botao-busca { height: auto; top: 0; right: 36px; line-height: 25px; background-color: #2B5263; } .busca input { width: 70%; } .botao-busca.icon-search:before { font-size: 23px; } .conteiner .logo { display:none; } #cabecalho .atalhos-mobile { opacity: 1!important; } #cabecalho .atalhos-mobile li { float: right; height: 100%; margin-top: 0px; line-height: 68px; border-right: 1px solid rgba(0, 0, 0, 0.2); border-left: 1px solid rgba(255, 255, 255, 0.2); margin-bottom: -10px; } #cabecalho .atalhos-mobile li.vazia { display: none; } #cabecalho .atalhos-mobile li:first-child { border: none; float: left; } #cabecalho .atalhos-mobile li:first-child a { top: 0; } #cabecalho .atalhos-mobile a img { width:78px; } /** BANNER / SLIDES **/ .flexslider { border-radius:0; } .flexslider .slides img { height: 210px; width: auto; object-fit: cover; } #secao-vantagens { display: grid; grid-template-columns: 1fr 1fr; font-size: 0.9em; margin-bottom: 2rem; margin-left: 0px; } #secao-vantagens li { display: flex; justify-content: center; align-items: center; padding: 5px 0px; } #secao-vantagens img { max-width: 45px; margin-right: 5px; } .listagem .titulo-categoria { text-align:center; font-size:1.5em; display: flex; justify-content: center; } .listagem .titulo-categoria strong:after { content: '.'; display: block; height: 5px; width: 70%; margin: 0px auto; text-indent: -9999px; border-bottom: 0px solid #999; } .listagem .listagem-item .nome-produto { font-weight:bold; } .listagem-item .botao.principal.botao-comprar { background-color: #2B5263; padding: 8px 0px; width: 100%; text-align: center; border-radius: 10px; } .acoes-produto-responsiva.visible-phone { position: relative; margin-top: 1rem!important; width: 100%; text-align: center; } .acoes-produto-responsiva.visible-phone a { width: 90%; text-align: center; border-radius: 7px; padding: 10px; } .acoes-produto-responsiva.visible-phone a span.titulo { font-weight: bold; text-transform: uppercase; } .info-produto { text-align: center; font-size: 1.3em; } .bandeiras-produto span.fundo-principal.bandeira-promocao { font-size: 1.1em; padding: 3px 20px; border: none; } .listagem .listagem-linha:first-child { padding: 0; margin: 0; border: 0; } .listagem .listagem-linha li { margin-top: -10px; } .listagem .imagem-produto { min-height: 240px; } .listagem .imagem-produto img { max-width: 160%; max-height: 160%; zoom: 120%; top: -10%; left: 0%; margin: 10px auto; } #corpo .breadcrumbs { border: 0; } #corpo .breadcrumbs ul li * { font-weight: 700; font-size: 0.4em; font-weight: 400; } #corpo .breadcrumbs ul li { display:block!important; border-left: 1px solid rgba(0,0,0,0.1); } #corpo .breadcrumbs ul li:last-child * { font-weight: 600; } } </style>");
       }
 
     ajustaCabecalho();
@@ -139,9 +160,9 @@ $(function () {
     ajustaCorpo();
     aplicaEstilos();
     criaNovoRodape();
+    arrumaPaginaCategoria();
 
     if (isMobile) {
       $('.menu.superior').toggle();
     }
-
   });
