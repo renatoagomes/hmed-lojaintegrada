@@ -352,6 +352,21 @@ body.pagina-categoria .filtro.lista.borda-principal h4 {
     width:78px;
   }
 
+  /** FILTRO DIAMETROS **/
+  div.menu.lateral.diametros {
+    margin-bottom:1rem;
+    background: none;
+  }
+  div.menu.lateral.diametros > ul.nivel-um {
+    display: block;
+    max-width: 70%;
+  }
+  ul#filtro-diametro {
+    background: white;
+  }
+  ul#filtro-diametro li {
+    border-bottom: 1px solid #ccc;
+  }
 
   /** BANNER / SLIDES **/
   .flexslider {
@@ -469,5 +484,48 @@ body.pagina-categoria .filtro.lista.borda-principal h4 {
   }
   #corpo .breadcrumbs ul li:last-child * {
     font-weight: 600;
+  }
+
+  /** BANNER LATERAL **/
+  ul.limite-banner {
+    max-width: 100%;
+    float: none;
+  }
+  div.banner.lateral {
+    display: none;
+  }
+
+  /** NOVO RODAPE **/
+  #novoRodape {
+    flex-direction: column;
+  }
+  #novoRodape span.titulo {
+    font-size: 1em;
+  }
+  #novoRodape .container-esquerda {
+    width: 100%;
+  }
+  #novoRodape .container-esquerda .sobre-loja-rodape {
+    font-size: 0.8em;
+    padding: 2rem;
+  }
+  #novoRodape .container-esquerda .logo-container img {
+    margin-top: 1.5rem
+  }
+  #novoRodape .fale-conosco-container ul {
+    flex-direction: column;
+  }
+  #novoRodape .fale-conosco-container ul a {
+    max-width: 100%;
+    justify-content: left;
+    margin-bottom:1rem;
+  }
+  #novoRodape .fale-conosco-container ul i {
+    font-size: 3em;
+    margin-right: 1rem;
+  }
+  #novoRodape .container-direita {
+    width: 100%;
+    flex-direction: column;
   }
 }
