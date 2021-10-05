@@ -127,6 +127,12 @@ $(function () {
     $('#novoRodape .container-direita .conteudo-container').append(itemPaginas);
     $('#novoRodape .container-direita .pagamento-container').append(itemPagamento);
     $('#novoRodape .container-direita .selos-container').append(itemSelos);
+
+    $('#novo-menu a').each((idx,el) => {
+      if (idx == 0) return;
+      let clone = el.cloneNode(true);
+      $('div.categorias-container ul').append("<li><a href="+clone+">"+clone.innerText+"</a></li>");
+    });
     
     let itemContato = $('#rodape > div.institucional.fundo-secundario > div > div > div > div > div');
     $('#novoRodape .container-esquerda .fale-conosco-container').append(itemContato);
