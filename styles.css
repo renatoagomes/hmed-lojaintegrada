@@ -257,6 +257,15 @@ body.pagina-categoria .filtro.lista.borda-principal h4 {
   padding: 0.5rem 1rem;
 }
 
+/*** RODAPE CARRINHO ***/
+body.pagina-carrinho #novoRodape .container-esquerda {
+  width: 100%;
+  padding: 1rem;
+}
+body.pagina-carrinho #novoRodape .container-direita {
+  display: none;
+}
+
 /** RESPONSIVIDADE MOBILE < 900PX **/
 @media all and (max-width:900px) {
   #novo-menu {
@@ -516,6 +525,7 @@ body.pagina-categoria .filtro.lista.borda-principal h4 {
     flex-direction: column;
   }
 }
+
 
 /** RESPONSIVIDADE ~Tablet **/
 @media all and (min-width:901px) and (max-width:1466px) {
