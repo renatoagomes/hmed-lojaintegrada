@@ -159,6 +159,7 @@ $(function () {
 
       let diametros = $('.pagina-categoria .menu.lateral ul.nivel-um ul.nivel-dois > li.com-filho.ativo ul.nivel-tres li');
       $('#filtro-diametro').append(diametros);
+      $('.menu.lateral.diametros').insertBefore('.secao-principal > div.coluna.esquerda > .menu.lateral:first')
 
       let isPaginaCategoria = $('body').hasClass('pagina-categoria');
       let isTodosMateriais = Array.isArray(window.location.href.match("todos-os-materiais"));
