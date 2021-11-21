@@ -31,7 +31,8 @@
   grid-template-columns: repeat(5, 1fr);
   text-align: center;
   align-items: center;
-  row-gap: 0rem;
+  row-gap: 0.3rem;
+  column-gap: 0.5rem;
   margin: 2rem 0 0rem;
 }
 #novo-menu a {
@@ -43,21 +44,20 @@
 }
 #novo-menu a:hover {
   color: #2b5263;
-  font-weight: 500;
+  font-weight: 600;
 }
 #novo-menu a:first-child {
   text-transform:uppercase;
 }
 #novo-menu a div.pontinho-menu {
-  height: 5px;
-  width: 5px;
+  height: 8px;
+  width: 8px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
-  margin-bottom: 2px;
-  margin-right: 8px;
+  margin-bottom: 1px;
+  margin-right: 2px;
 }
-
 
 /** CORPO DA PAGINA && LISTAGEM DE PRODUTOS **/
 body.pagina-inicial #corpo .coluna.esquerda {
@@ -93,6 +93,9 @@ body.pagina-inicial #corpo  div.secao-principal.row-fluid  div.marcas.hidden-pho
   font-weight: bold;
   padding: 8px;
   font-size: 1.3em;
+}
+.listagem-linha .preco-produto span.desconto-a-vista {
+    font-size: 16px;
 }
 
 /** BANNER LATERAL **/
@@ -172,6 +175,13 @@ div.banner.lateral {
 #corpo .menu.lateral .filtro .borda-alpha {
     background: white;
 }
+#corpo .breadcrumbs ul li * {
+    font-size: 1.2em;
+    display: inline;
+}
+.info-principal-produto .breadcrumbs ul li {
+    display: flex;
+}
 
 
 /** NOVO RODAPE **/
@@ -235,6 +245,7 @@ div.banner.lateral {
   flex-direction: column;
   align-items: start;
   padding: 1.5rem;
+  padding-right: 0;
 }
 #novoRodape .container-direita .selos-container {
   display: flex;
@@ -561,5 +572,18 @@ body.pagina-carrinho #novoRodape .container-direita {
   /** SECAO VANTAGENS **/
   #secao-vantagens {
     max-width: 1240px;
+  }
+
+  #novo-menu {
+    width: 1240px;
+    margin-left: -5%;
+  }
+}
+
+/** RESPONSIVIDADE MD+ **/
+@media all and (min-width:1466px) {
+  #novo-menu {
+    width:  120%;
+    margin-left: -10%;
   }
 }
