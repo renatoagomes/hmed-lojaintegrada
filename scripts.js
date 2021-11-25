@@ -5,7 +5,7 @@ $(function () {
   let novoMenu = $('#novo-menu');
   let linksMenu = $('#cabecalho .menu.superior ul.nivel-dois li.com-filho > a');
   let coresCategorias = {
-    "Ácido Poliglicólico / PGA / Vicryl"     :"#E23712",
+    "Ácido Poliglicólico / PGA / Vicryl"     :"#A05E82",
     "Algodão"                                :"#DBAB9D",
     "Seda"                                   :"#5EB9E9",
     "Catgut Simples"                         :"#E2D444",
@@ -16,7 +16,7 @@ $(function () {
     "PGC 25 / Monocryl"                      :"#DE9A50",
     "Poliéster / Mersilene"                  :"#E0820A",
     "Polipropileno / Prolene"                :"#4D9FAE",
-    'Ácido Poliglicólico - Rápida absorção'  :"#A05E82",
+    'Ácido Poliglicólico - Rápida absorção'  :"#E23712",
     'corPadrao'                              :"#cccccc" 
   };
 
