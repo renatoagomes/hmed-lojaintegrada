@@ -58,6 +58,9 @@
   margin-bottom: 1px;
   margin-right: 2px;
 }
+#novo-menu a div.pontinho-menu.quadrado {
+    border-radius: 0!important;
+}
 
 /** CORPO DA PAGINA && LISTAGEM DE PRODUTOS **/
 body.pagina-inicial #corpo .coluna.esquerda {
